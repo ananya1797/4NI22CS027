@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import TopUsers from './pages/TopUsers';
+import MostCommentedPosts from './pages/MaxCommentsPost';
+import Feed from './pages/Feed';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
+        <nav style={{ marginBottom: '20px' }}>
+          <Link to="/" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold' }}>Home</Link>
+          <Link to="/top-users" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold' }}>Top Users</Link>
+          <Link to="/most-commented-posts" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold' }}>Most Commented Posts</Link>
+          <Link to="/feed" style={{ textDecoration: 'none', fontWeight: 'bold' }}>Feed</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<h1>Welcome to Social Media Analytics App</h1>} />
+          <Route path="/top-users" element={<TopUsers />} />
+          <Route path="/most-commented-posts" element={<MostCommentedPosts />} />
+          <Route path="/feed" element={<Feed />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
